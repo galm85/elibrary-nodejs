@@ -1,0 +1,83 @@
+<div class="row pt-5 px-5">
+    <div class="col-12">
+        <nav aria-label="breadcrumb bg-dark">
+            <ol class="breadcrumb text-center">
+              <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Books</li>
+            </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center display-5 py-5 fw-bold">Books</h1>
+    </div>
+</div>
+
+<div class="row justify-content-around">
+    <div class="col-6">
+        <a href="/admin/add-book">
+            <button class="btn btn-primary">Add New Book</button>
+        </a>
+    </div>
+    <div class="col-3 ">
+        <form  action="/admin/search-book" method="get">
+            <input type="search" name="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" >
+        </form>
+    </div>
+        
+            
+        
+</div>
+
+<% if(search != 'undefined'){ %> 
+    <div class="row text-center ">
+        <div class="col-12">
+            <h5>Result For: <span class="text-primary "><%= search %> </span></h5>
+            <a class="btn btn-outline-primary mt-4" href="/admin/books">Clear</a>
+        </div>
+    </div>
+<% } %> 
+
+
+<hr>
+
+<div class="row  py-5">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Author</th>
+                    <th>Rank</th>
+                    <th>Pages</th>
+                    <th>Available</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% books.forEach((book,index)=>{%>
+                    <tr class="<%= book.available ? "" : "book-not-available-row" %>" >
+                        <td><%= index+1 %></td>
+                        <td><img src="/uploads/books/<%=book.image%>" width="50px" alt=""></td>
+                        <td><%= book.title %></td>
+                        <td><%= book.category[0].name %></td>
+                        <td><%= book.author %></td>
+                        <td><%= book.rank %></td>
+                        <td><%= book.pages %></td>
+                        <td><%= book.available ? "yes" :"no" %></td>
+
+                        <td>
+                            <a href="/admin/books/edit-book/<%=book._id%>"><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></a>
+                            <button class="btn btn-danger deleteBookBtn"  data-id="<%= book._id %> "><i class="bi bi-trash-fill"></i></button>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

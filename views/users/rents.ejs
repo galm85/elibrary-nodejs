@@ -1,0 +1,94 @@
+<div class="row py-5">
+    <div class="col-12">
+        <h1 class="display-5 fw-bold text-primary text-center"> <%= user.firstName %>'s  Rents</h1>
+    </div>
+</div>
+
+<hr>
+
+
+
+<div class="row d-flex  justify-content-center my-5">
+        <div class="col-12">
+            <h3 class="text-center">Active Rents</h3>
+        </div>
+
+    <% if(typeof rents != 'undefined') {%> 
+        <div class="col-8">
+            <table class="table">
+                <thead>
+                    <th>Image</th>
+                    <th>Book Title</th>
+                    <th>Rent Date</th>
+                    <th>Return Date</th>
+                    <th>Return</th>
+                </thead>
+                <tbody>
+                    <% rents.forEach(rent=>{ %> 
+                        <% if(rent.onRent){ %> 
+                            <tr>
+                                <td><img src="/uploads/books/<%= rent.book[0].image %> " width="50px" alt="<%= rent.book[0].title %>"></td>
+                                <td><%= rent.book[0].title %> </td>
+                                <td><%= new Date(rent.createdAt).toDateString() %>  </td>
+                                <td> On Rant</td>
+                                <td>
+                                    <button 
+                                    class="btn btn-warning returnBookBtn" 
+                                    data-book-id="<%=rent.book[0]._id%>" 
+                                    data-rent-id="<%=rent._id%>"
+                                    data-user-id="<%=rent.user[0]._id%>"
+                                    > 
+                                    return
+                                </button>
+                            </td>
+                            </tr>
+                        <% } %> 
+                    <% }) %> 
+                </tbody>
+            </table>
+        </div>
+    <% } %> 
+                    
+</div>
+
+      
+
+<hr>
+
+
+
+<div class="row d-flex  justify-content-center my-5">
+    
+    <div class="col-12">
+        <h3 class="text-center">History</h3>
+    </div>
+    
+    <% if(typeof rents != 'undefined') {%> 
+    <div class="col-8">
+        <table class="table">
+            <thead>
+                <th>Image</th>
+                <th>Book Title</th>
+                <th>Rent Date</th>
+                <th>Return Date</th>
+            </thead>
+            <tbody>
+                <% rents.forEach(rent=>{ %> 
+                    <% if(!rent.onRent){ %> 
+                        <tr>
+                            <td>
+                                <img src="/uploads/books/<%= rent.book[0].image %> " width="50px" alt="<%= rent.book[0].title %>">
+                            </td>
+                            <td><%= rent.book[0].title %> </td>
+                            <td><%= new Date(rent.createdAt).toDateString() %> </td>
+                            <td><%= new Date(rent.updatedAt).toDateString() %> </td>
+                        </tr>
+                    <% } %> 
+                <% }) %>   
+            </tbody>
+        </table>
+        
+    </div>
+    <% } %> 
+
+</div>

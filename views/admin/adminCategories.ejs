@@ -1,0 +1,62 @@
+<div class="row pt-5 px-5">
+    <div class="col-12">
+        <nav aria-label="breadcrumb bg-dark">
+            <ol class="breadcrumb text-center">
+              <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Categories</li>
+            </ol>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center display-5 py-5 fw-bold">Categories</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <a href="/admin/add-category">
+            <button class="btn btn-primary">Add New Category</button>
+        </a>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>color</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categories.forEach((category,index)=>{%>
+                    <tr>
+                        <td><%= index+1 %></td>
+                      
+                        <td><%= category.name %></td>
+                        <td class="d-flex">
+                            <div style="width:20px;height: 20px;background-color:<%=category.color%>;"> 
+                            </div>
+                                <p class="ms-3"><%= category.color %></p>
+                        </td>
+                        
+                        <td>
+                            <a href="/admin/categoires/edit-category/<%=category._id%>"><button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></a> 
+                        </td>
+                        <td> <button class="btn btn-danger deleteCategoryBtn"  data-id="<%= category._id %> "><i class="bi bi-trash-fill"></i></button></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

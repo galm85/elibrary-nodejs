@@ -1,0 +1,116 @@
+<div class="row pt-5 px-5">
+    <div class="col-12">
+        <nav aria-label="breadcrumb bg-dark">
+            <ol class="breadcrumb text-center">
+              <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Rents</li>
+            </ol>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center display-5 py-5 fw-bold">Rents</h1>
+    </div>
+</div>
+
+
+
+<hr>
+
+<div class="row my-5">
+    <div class="col-12 my-5">
+        <h3 class="text-center">Active Rents</h3>
+    </div>
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                   
+                    <th>Rent Date</th>
+                    <th>Book Title</th>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>Return Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(typeof rents != 'undefined'){ %> 
+                    <% rents.forEach((rent,index)=>{ %> 
+                        <% if(rent.onRent){ %> 
+                        <tr >
+                          
+                            <td><%= new Date(rent.createdAt).toDateString() %> </td>
+                            <td><%= rent.book[0].title %> </td>
+                            <td><%= rent.user[0].lastName + " " + rent.user[0].firstName %> </td>
+                            <td><%= rent.user[0].email %> </td>
+                            <% if(!rent.onRent){ %>
+                                <td><%= new Date(rent.updatedAt).toDateString() %> </td>
+                                <% }else{ %>  
+                                    <td>The Book Not returned yet</td>
+                                <% } %>  
+                            <td> 
+                                <a href="/admin/rents/<%- rent._id %> " class="btn btn-danger">View</a>
+                            </td>
+                        </tr>
+                        <%  } %> 
+                    <%  }) %> 
+                <% } %> 
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<hr>
+
+
+
+<div class="row my-5">
+    <div class="col-12 my-5">
+        <h3 class="text-center">Return Books</h3>
+    </div>
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+             
+                    <th>Rent Date</th>
+                    <th>Book Title</th>
+                    <th>User Name</th>
+                    <th>User Email</th>
+                    <th>Return Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(typeof rents != 'undefined'){ %> 
+                    <% rents.forEach((rent,index)=>{ %> 
+                        <% if(!rent.onRent){ %> 
+                        <tr >
+                          
+                            <td><%= new Date(rent.createdAt).toDateString() %> </td>
+                            <td><%= rent.book[0].title %> </td>
+                            <td><%= rent.user[0].lastName + " " + rent.user[0].firstName %> </td>
+                            <td><%= rent.user[0].email %> </td>
+                            <% if(!rent.onRent){ %>
+                                <td><%= new Date(rent.updatedAt).toDateString() %> </td>
+                                <% }else{ %>  
+                                    <td>The Book Not returned yet</td>
+                                <% } %>  
+                            <td> 
+                                <a href="/admin/rents/<%- rent._id %> " class="btn btn-danger">View</a>
+                            </td>
+                        </tr>
+                        <%  } %> 
+                    <%  }) %> 
+                <% } %> 
+                
+            </tbody>
+        </table>
+    </div>
+</div>

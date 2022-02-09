@@ -1,0 +1,63 @@
+<div class="row pt-5 px-5">
+    <div class="col-12">
+        <nav aria-label="breadcrumb bg-dark">
+            <ol class="breadcrumb text-center">
+              <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+              <li class="breadcrumb-item"><a href="/admin/rents">Rents</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Single Rent</li>
+            </ol>
+    </div>
+</div>
+
+
+
+
+<div class="row py-5">
+    <div class="col-12">
+        <h1 class="display-5 text-center">Rent Details</h1>
+    </div>
+</div>
+
+
+<hr>
+
+
+<div class="row py-5 d-flex justify-content-center">
+    <div class="col-3 px-5 border-end">
+        <img src="/uploads/books/<%= rent.book[0].image %> " width="200px" alt="book image">  
+    </div>
+    <div class="col-4 px-5 rent-data">
+        <p><span>  Rant Date:</span> 
+        <br> <%= new Date(rent.createdAt).toDateString() %> </p>
+        
+        <% if(rent.onRent){ %>
+            <p style="color:green"><span>  Status:</span> 
+                <br> On Rent </p>
+        <% }else{ %> 
+            <p><span>  Return Date:</span> 
+                <br> <%= new Date(rent.updatedAt).toDateString() %> </p> 
+        <% } %>  
+
+        <p><span> Book Title:</span>
+        <br>  <%= rent.book[0].title %> </p>
+        
+        <p><span> Book Author:</span>
+        <br>  <%= rent.book[0].author %> </p>
+        
+        <p><span> User Name:</span>
+        <br>  <%= rent.user[0].lastName + " " +  rent.user[0].firstName %> </p>
+        
+        <p><span> User Email:</span>
+        <br>  <%= rent.user[0].email %> </p>
+        
+        <p><span> User Phone:</span>
+        <br>  <%= rent.user[0].phone %> </p>
+    </div>
+    </div>
+</div>
+<hr>
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <a href="/admin/rents" class="btn btn-outline-danger">Return</a>
+    </div>
+</div>

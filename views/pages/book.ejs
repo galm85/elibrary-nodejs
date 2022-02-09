@@ -1,0 +1,39 @@
+<div class="row ">
+
+    <div class="col-4 text-center py-5">
+        <img src="/uploads/books/<%=book.image%>" alt="">
+       
+    </div>
+
+    <div class="col-6">
+        <div class="d-flex justify-content-between pt-5">
+            <h1 class="display-5  fw-bold "><%= book.title %> </h1>
+            <% if(book.available) { %> 
+                <a href="/users/rent-book/<%= book._id %> "><button class="btn btn-success ">Rent this book</button></a>
+                <% }else{ %> 
+                    <button class="btn btn-outline-danger  " disabled>Book not available</button>
+            <% } %> 
+        </div>
+        <p ><span class="fw-bold"><i class="bi bi-person-circle"></i>  </span> <%- book.author %> </p>
+        <p ><span class="fw-bold"><i class="bi bi-tag"></i> </span> <%- category.name %> </p>
+        <p ><span class="fw-bold"><i class="bi bi-book"></i> </span> <%- book.pages %> pages </p>
+        <p ><span class="fw-bold"><i class="bi bi-star-fill"></i></span> <%- book.rank %> / 10</p>
+        <% if(book.available) {%>
+            <p ><span class="fw-bold"> Available: <i class="bi bi-check-lg"></i></p>
+        <% } else {%>
+            <p ><span class="fw-bold"> Available: <i class="bi bi-x-circle"></i></p>  
+        <% } %> 
+        <hr>
+        <p><%= book.summary %> </p>
+
+    </div>
+
+</div>
+<hr>
+<div class="text-center">
+    <a href="/categories/<%=category.name%>">
+        <button class="btn btn-outline-danger">return</button>
+    </a>
+</div>
+
+

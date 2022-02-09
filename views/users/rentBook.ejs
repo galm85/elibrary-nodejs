@@ -1,0 +1,24 @@
+<div class="row pt-5">
+    <div class="col-12">
+        <h1 class="display-5 text-center">Rent <%=book.title %></h1>
+    </div>
+</div>
+<hr>
+
+<div class="row p-5">
+    <div class="col-3">
+        <img src="/uploads/books/<%= book.image %> " width="100%" alt="">
+    </div>
+    <div class="col-6 px-5">
+        <h3>Book Details</h3>
+        <p> Title: <%= book.title %> </p>
+        <p> Author: <%= book.author %> </p>
+        <h3>Rent By</h3>
+        <p> Name: <%= user.lastName + " " + user.firstName %> </p>
+        <p> Email: <%= user.email %> </p>
+        <p> Phone: <%= user.phone %> </p>
+        <div class="mt-5">
+            <button class="btn btn-dark rentBtn" data-book-id="<%= book._id %>" data-user-id="<%= user._id %>">Rent</button>
+        </div>
+    </div>
+</div>

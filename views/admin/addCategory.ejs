@@ -1,0 +1,47 @@
+<div class="row pt-5 px-5">
+    <div class="col-12">
+        <nav aria-label="breadcrumb bg-dark">
+            <ol class="breadcrumb text-center">
+              <li class="breadcrumb-item"><a href="/admin">Admin Panel</a></li>
+              <li class="breadcrumb-item"><a href="/admin/categories">Categories</a></li>
+              <li class="breadcrumb-item active" aria-current="page">New Category</li>
+            </ol>
+    </div>
+</div>
+
+
+
+<div class="col-12">
+    <h1 class="display-5 fw-bold py-5 text-center text-primary">Add New Category</h1>
+</div>
+
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <form action="/admin/add-category" method="POST" >
+            <div class="row g-3">
+                
+                <div class="col-12">
+                    <label for="title">Category Name</label>
+                    <input type="text" class="form-control" name="name" id="name">
+                </div>
+
+                
+               
+                <div class="col-12 text-center my-5 ">
+                    <label for="author">Category backgraound Color</label>
+                    <br>
+                    <br>
+                    <input type="color"   name="color" id="color">
+                </div>
+
+              <hr>
+
+                <div class="text-center my-5">
+                    <button class="btn btn-primary">Add Category</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

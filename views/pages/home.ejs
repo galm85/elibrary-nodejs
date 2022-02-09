@@ -1,0 +1,83 @@
+<div class="row py-5 ps-5 ">
+   
+    <div class="col-12 col-lg-6">
+        <h1 class="display-5 fw-bold mb-3">E-Library </h1>
+        <p class="lead">
+           Self library Service.<br>
+            A veraity of over than 10,000 books from all over the world, all generes, best authors. Just login and rent your favorite books
+        </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="/explore-latest" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Our Chooses</a>
+            <a href="/explore-random" class="btn btn-outline-secondary  btn-lg px-4 me-md-2">Find me a book</a>
+
+        </div>
+
+    </div>
+
+    <div class="col-12 col-lg-6 text-center">
+        <img class="banner" src="/images/read.png" width="500" alt="cooking" class="d-block mx-lg-auto img-fluid" loading='lazy'>
+    </div>
+
+</div> 
+
+
+<!-- Categories start -->
+<div class="d-flex mb-2 px-5 align-items-center">
+    <h2 class="display-5 text-center">Genere</h2>
+    <a href="/categories" class="ms-auto">View All</a>
+</div>
+
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-2 py-4 justify-content-center">
+    <% if(categories){ %> 
+        <% categories.forEach(category=>{ %> 
+            <a href="/categories/<%= category.name.toLowerCase().replace(/ /g,'-') %>" class="col category-card" style="background-color:<%- category.color %>;">
+              <p><%= category.name.toUpperCase() %></p>
+            </a>
+        <% }) %> 
+    <% } %> 
+</div>
+
+<!-- Categories end -->
+
+<hr>
+
+<!-- Pupular start -->
+<section class="py-4">
+    <h2 class="text-center display-5 mb-5 fw-bold">Most Pupular</h2>
+    
+    <div class="row row-cols-2 row-cols-lg-5">
+        <% if(popular){ %> 
+            <% popular.forEach(book=>{ %> 
+                <a href="/books/<%= book._id %> " class="book-link">
+                    <div class="col book-card">
+                        <img src="/uploads/books/<%- book.image %> " alt="<%- book.title %>">
+                        <p class="text-center"><%- book.title %></h3>
+                    </div>
+                    </a>
+            <% }) %> 
+        <% } %> 
+    </div>
+
+</section>
+<!-- Pupular end -->
+
+<hr>
+<!-- New Books start -->
+<section class="py-4">
+    <h2 class="text-center display-5 mb-4 fw-bold">New Books</h2>
+    
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <% if(newBooks){ %> 
+            <% newBooks.forEach(book=>{ %> 
+                <a href="/books/<%= book._id %> " class="book-link">
+                    <div class="col book-card">
+                        <img src="/uploads/books/<%- book.image %> " alt="<%- book.title %>">
+                        <p class="text-center"><%- book.title %></h3>
+                    </div>
+                    </a>
+            <% }) %> 
+        <% } %> 
+    </div>
+
+</section>
+<!-- New Books end -->

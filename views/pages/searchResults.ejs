@@ -1,0 +1,30 @@
+<div class="col-12">
+    <h1 class="text-center display-5 fw-bold py-5"> Results for: <%= search %> </h1>
+    <a href="/"><button class="btn btn-success ms-5">return</button></a>
+    <hr>
+</div>
+
+
+
+
+
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+    <% if(books && books.length > 0){ %> 
+        <% books.forEach(book=>{ %> 
+            <a href="/books/<%= book._id %> " class="book-link">
+                <div class="col book-card">
+                    <img src="/uploads/books/<%- book.image %> " alt="<%- book.title %>">
+                    <p class="text-center lead"><%- book.title %></h3>
+                </div>
+                </a>
+        <% }) %> 
+
+    <% }else{ %>
+     
+            <div class="text-center mt-5" style="width:100%">
+                <h3><i>No Results found...</i></h3> 
+
+            </div>
+
+    <% } %> 
+</div>

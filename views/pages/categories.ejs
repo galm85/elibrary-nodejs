@@ -1,0 +1,16 @@
+<div class="row py-5">
+    <div class="col-12">
+        <h1 class="display-5 fw-bold text-center">Genre</h1>
+    </div>
+</div>
+
+
+<div class="row row-cols-2 row-cols-lg-5 justify-content-center">
+    <% if(categories){ %>
+        <% categories.forEach(category=>{ %> 
+            <a href="/categories/<%= category.name.toLowerCase().replace(/ /g,'-') %>" class="col category-card" style="background-color:<%- category.color %>;">
+              <p><%= category.name.toUpperCase() %></p>
+            </a>
+        <% }) %> 
+    <% } %>
+</div>
