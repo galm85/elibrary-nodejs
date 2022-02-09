@@ -54,6 +54,7 @@ const usersRoutes = require('./server/routes/users.routes');
 // Autentication User
 user = null;
 const isAdmin = (req,res,next)=>{
+ 
     if(req.session.user && req.session.user.isAdmin){
         next()
     }else{
@@ -69,7 +70,7 @@ const getUser = async (req,res,next)=>{
 }
 
 
-app.use('/admin',isAdmin,getUser,adminRoutes);
+app.use('/admin',isAdmin,adminRoutes);
 app.use('/users',getUser,usersRoutes);
 app.use('/',getUser,pagesRoutes)
 

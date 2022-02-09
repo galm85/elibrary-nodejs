@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 exports.getRegister = async(req,res)=>{
 
     if(req.session.user){
-        res.redirect('/');
+        return res.redirect('/');
     }
 
     try {
@@ -74,13 +74,13 @@ exports.postRegister = async(req,res)=>{
 
 
 exports.getLogin = async(req,res)=>{
-     if(req.session.user){
-        res.redirect('/');
+     if(global.user){
+        return res.redirect('/');
     }
 
     try {
         
-        res.render('users/login',{title:'E-library | Login'})
+         return res.render('users/login',{title:'E-library | Login'})
 
     } catch (error) {
         console.log(error)
@@ -127,9 +127,16 @@ exports.logout = async(req,res)=>{
 
 
 exports.getRentBook = async(req,res)=>{
+    // if(!global.user){
+    //     console.log('undefine')
+    // }else{
+    //     console.log(' no undefine')
 
-    if(!req.session.user){
-        return redirect('/users/login');
+    // }
+   
+    // return;
+    if(!global.user){
+        return res.redirect('/users/login');
     }
 
 
